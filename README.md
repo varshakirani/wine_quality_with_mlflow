@@ -83,6 +83,9 @@ You can update the .env file in the project following the env_template file
 ```
 
 ### 4. Create EC2 machine (Ubuntu)
+```bash
+- create access key and store it locally to connect to ec2 
+```
 
 ### 5. Open EC2 and Install docker in EC2 Machine:
 ```bash
@@ -118,4 +121,12 @@ AWS_REGION = eu-central-1
 AWS_ECR_LOGIN_URI = demo>>  652165836244.dkr.ecr.eu-central-1.amazonaws.com
 
 ECR_REPOSITORY_NAME = wine_quality
+MLFLOW_TRACKING_URI=
+MLFLOW_TRACKING_USERNAME=
+MLFLOW_TRACKING_PASSWORD=
+```
+
+### 8. Copy the trained ML model to EC2 instance 
+```bash
+scp -i path_to_to_yourkey.pem/wine_quality.pem artifacts/model_trainer/model.joblib ubuntu@your-ec2-instance-public-dns:/home/ubuntu/
 ```
