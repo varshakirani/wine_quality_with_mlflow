@@ -86,9 +86,9 @@ jobs:
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
          
-      # - name: Stop and remove container if running
-      #   run: |
-      #    docker ps -q --filter "name=wine_quality" | grep -q . && docker stop wine_quality && docker rm -fv wine_quality
+      - name: Stop and remove container if running
+        run: |
+         docker ps -q --filter "name=wine_quality" | grep -q . && docker stop wine_quality && docker rm -fv wine_quality
        
       - name: Run Docker Image to serve users
         run: |
